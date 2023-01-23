@@ -7,9 +7,9 @@
 package studentdatabase;
 
 public enum Degree {
-    science ("Science"),
-    arts ("Arts"),
-    medicine ("Medicine");
+    science("Science"),
+    arts("Arts"),
+    medicine("Medicine");
     private String name;
 
     Degree(String name) {

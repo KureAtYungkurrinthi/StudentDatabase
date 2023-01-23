@@ -11,8 +11,8 @@ package studentdatabase;
  */
 public class Student {
     public final Degree DEGREE = Degree.science;
-    private int studentNumber;
-    private String familyName, givenName;
+    protected int studentNumber;
+    protected String familyName, givenName;
 
     public Student(int studentNumber, String familyName, String givenName) {
         this.studentNumber = studentNumber;
@@ -46,6 +46,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Academic record for %s %s(%d)\nDegree: %s".formatted(givenName, familyName, studentNumber, DEGREE);
+        String record = "Academic record for %s %s(%d)\n".formatted(givenName, familyName, studentNumber);
+        record += "Degree: " + DEGREE;
+        return record;
     }
 }
