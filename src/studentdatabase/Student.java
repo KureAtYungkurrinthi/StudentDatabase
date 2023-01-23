@@ -46,8 +46,9 @@ public class Student {
 
     @Override
     public String toString() {
-        String record = "Academic record for %s %s(%d)\n".formatted(givenName, familyName, studentNumber);
+        String record = "Academic record for %s %s (%d)\n".formatted(givenName, familyName, studentNumber);
         record += "Degree: " + DEGREE;
+        record += "\n";
         return record;
     }
 }

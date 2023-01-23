@@ -17,10 +17,11 @@ public class MedStudent extends Student {
 
     @Override
     public String toString() {
-        String record = "Academic record for %s %s(%d)".formatted(givenName, familyName, studentNumber);
+        String record = "Academic record for %s %s (%d)".formatted(givenName, familyName, studentNumber);
         record += "\nDegree: " + DEGREE;
         for (String prize: prizes)
-            record += "Prize: " + prize;
+            record += "\nPrize: " + prize;
+        record += "\n";
         return record;
     }
 }

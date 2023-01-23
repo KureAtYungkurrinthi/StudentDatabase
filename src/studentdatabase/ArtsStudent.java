@@ -18,10 +18,11 @@ public class ArtsStudent extends Student {
 
     @Override
     public String toString() {
-        String record = "Academic record for %s %s(%d)".formatted(givenName, familyName, studentNumber);
+        String record = "Academic record for %s %s (%d)".formatted(givenName, familyName, studentNumber);
         record += "\nDegree: " + DEGREE;
         record += "\nMajor: " + major;
         record += "\nMinor: " + minor;
+        record += "\n";
         return record;
     }
 }
