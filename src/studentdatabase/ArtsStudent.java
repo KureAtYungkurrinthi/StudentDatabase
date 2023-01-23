@@ -18,8 +18,7 @@ public class ArtsStudent extends Student {
 
     @Override
     public String toString() {
-        String record = "Academic record for %s %s (%d)".formatted(givenName, familyName, studentNumber);
-        record += "\nDegree: " + DEGREE;
+        String record = super.toString();
         record += "\nMajor: " + major;
         record += "\nMinor: " + minor;
         record += "\n";

@@ -17,8 +17,7 @@ public class MedStudent extends Student {
 
     @Override
     public String toString() {
-        String record = "Academic record for %s %s (%d)".formatted(givenName, familyName, studentNumber);
-        record += "\nDegree: " + DEGREE;
+        String record = super.toString();
         for (String prize: prizes)
             record += "\nPrize: " + prize;
         record += "\n";

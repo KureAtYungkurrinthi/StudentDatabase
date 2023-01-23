@@ -15,5 +15,12 @@ public class Tester {
         System.out.println(student1);
         System.out.println(student2);
         System.out.println(student3);
+
+        Result result1 = new Result(1000001, "BIOL1000", "HD", 89);
+        Result result2 = new Result(1000002, "CHEM1001", "DN");
+
+        System.out.println(result1);
+        System.out.println(result2);
+
     }
 }
