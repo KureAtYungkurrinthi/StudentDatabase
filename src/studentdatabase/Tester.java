@@ -12,15 +12,21 @@ public class Tester {
         Student student2 = new MedStudent(1000002, "Waylen", "Paige", "Chemistry Prize 1998", "Lion Award 2000");
         Student student3 = new ArtsStudent(1000003, "Train", "Jordan", "Politics", "Economics");
 
+        student1.addResult(new Result(1000001, "COMP1000", "PS", 55));
+        student1.addResult(new Result(1000001, "COMP1001", "DN", 77));
+        student1.addResult(new Result(1000001, "HIST1234", "HD"));
+
+        student2.addResult(new Result(1000002, "BIOL1000", "HD", 89));
+        student2.addResult(new Result(1000002, "CHEM1001", "DN"));
+
+        student3.addResult(new Result(1000003, "PHYS1010", "HD", 93));
+
         System.out.println(student1);
+        System.out.println();
         System.out.println(student2);
+        System.out.println();
         System.out.println(student3);
-
-        Result result1 = new Result(1000001, "BIOL1000", "HD", 89);
-        Result result2 = new Result(1000002, "CHEM1001", "DN");
-
-        System.out.println(result1);
-        System.out.println(result2);
+        System.out.println();
 
     }
 }

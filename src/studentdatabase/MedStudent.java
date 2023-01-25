@@ -17,10 +17,13 @@ public class MedStudent extends Student {
 
     @Override
     public String toString() {
-        String record = super.toString();
+        StringBuilder record = new StringBuilder("Academic record for " + givenName + " " + familyName + " (" + studentNumber + ")");
+        record.append("\nDegree: " + DEGREE);
         for (String prize: prizes)
-            record += "\nPrize: " + prize;
-        record += "\n";
-        return record;
+            record.append("\nPrize: " + prize);
+        if (!results.isEmpty())
+            for (Result result: results)
+                record.append("\n" + result);
+        return record.toString();
     }
 }

@@ -10,7 +10,7 @@ public class Result {
     private int studentNumber;
     private String topicCode;
     private String grade;
-    private Integer mark;
+    private int mark;
 
     public Result(int studentNumber, String topicCode, String grade) {
         this.studentNumber = studentNumber;
@@ -59,7 +59,6 @@ public class Result {
 
     @Override
     public String toString() {
-        return topicCode + " " + grade + ((mark == null) ? "" : " " + mark);
-
+        return topicCode + " " + grade + ((mark == 0) ? "" : " " + mark);
     }
 }

@@ -6,11 +6,14 @@
 
 package studentdatabase;
 
+import java.util.ArrayList;
+
 /**
  * A class that represents a Student (Science).
  */
 public class Student {
     public final Degree DEGREE = Degree.science;
+    protected ArrayList<Result> results = new ArrayList<Result>();
     protected int studentNumber;
     protected String familyName, givenName;
 
@@ -18,6 +21,10 @@ public class Student {
         this.studentNumber = studentNumber;
         this.familyName = familyName;
         this.givenName = givenName;
+    }
+
+    public void addResult(Result result) {
+        this.results.add(result);
     }
 
     public void setStudentNumber(int studentNumber) {
@@ -46,9 +53,11 @@ public class Student {
 
     @Override
     public String toString() {
-        String record = "Academic record for %s %s (%d)\n".formatted(givenName, familyName, studentNumber);
-        record += "Degree: " + DEGREE;
-        record += "\n";
-        return record;
+        StringBuilder record = new StringBuilder("Academic record for " + givenName + " " + familyName + " (" + studentNumber + ")");
+        record.append("\nDegree: " + DEGREE);
+        if (!results.isEmpty())
+            for (Result result: results)
+                record.append("\n" + result);
+        return record.toString();
     }
 }

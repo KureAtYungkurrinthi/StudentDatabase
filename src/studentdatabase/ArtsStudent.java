@@ -18,10 +18,13 @@ public class ArtsStudent extends Student {
 
     @Override
     public String toString() {
-        String record = super.toString();
-        record += "\nMajor: " + major;
-        record += "\nMinor: " + minor;
-        record += "\n";
-        return record;
+        StringBuilder record = new StringBuilder("Academic record for " + givenName + " " + familyName + " (" + studentNumber + ")");
+        record.append("\nDegree: " + DEGREE);
+        record.append("\nMajor: " + major);
+        record.append("\nMinor: " + minor);
+        if (!results.isEmpty())
+            for (Result result: results)
+                record.append("\n" + result);
+        return record.toString();
     }
 }
