@@ -1,3 +1,9 @@
+/*
+ * Author: Sheng-fan Wang <wang2147@flinders.edu.au>
+ * College of Science and Engineering, Flinders University
+ * Copyright (C) 2023, All Rights Reserved
+ */
+
 package studentdatabase;
 
 import java.io.File;

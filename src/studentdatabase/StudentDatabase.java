@@ -1,3 +1,9 @@
+/*
+ * Author: Sheng-fan Wang <wang2147@flinders.edu.au>
+ * College of Science and Engineering, Flinders University
+ * Copyright (C) 2023, All Rights Reserved
+ */
+
 package studentdatabase;
 
 import java.io.IOException;
@@ -12,16 +18,25 @@ public class StudentDatabase {
         Scanner vars = new Scanner(s);
         vars.useDelimiter(",");
         char c = vars.next().charAt(0);
+        int studentNumber = vars.nextInt();
+        String familyName = vars.next();
+        String givenName = vars.next();
         switch (c) {
             case 'A' -> {
-                studentDatabase.add(new ArtsStudent(vars.nextInt(), vars.next(), vars.next(), vars.next(), vars.next()));
+                String major = vars.next();
+                String minor = vars.next();
+                studentDatabase.add(new ArtsStudent(studentNumber, familyName, givenName, major, minor));
             }
             case 'M' -> {
-                studentDatabase.add(new MedStudent(vars.nextInt(), vars.next(), vars.next(), vars.next()));
+                String[] prizes = new String[10];
+                int prizeCount = 0;
+                while (vars.hasNext()) {
+                    prizes[prizeCount] = vars.next();
+                    prizeCount++;
+                }
+                studentDatabase.add(new MedStudent(studentNumber, familyName, givenName, prizes));
             }
-            case 'S' -> {
-                studentDatabase.add(new Student(vars.nextInt(), vars.next(), vars.next()));
-            }
+            case 'S' -> studentDatabase.add(new Student(studentNumber, familyName, givenName));
         }
     }
 
@@ -41,7 +56,7 @@ public class StudentDatabase {
         String grade = vars.next();
         for (Student student : studentDatabase)
             if (student.getStudentNumber() == studentNumber)
-                student.addResult(vars.hasNextInt() ? new Result(studentNumber, topicCode, grade, vars.nextInt()) : new Result(studentNumber, topicCode, grade));
+                student.addResult(vars.hasNextInt() ? new Result(topicCode, grade, vars.nextInt()) : new Result(topicCode, grade));
     }
 
 //    public void awardPrize(String prize, String template, int topicsRequired) {

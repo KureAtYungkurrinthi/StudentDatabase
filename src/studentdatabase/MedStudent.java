@@ -8,19 +8,29 @@ package studentdatabase;
 
 public class MedStudent extends Student {
     public final Degree DEGREE = Degree.medicine;
-    private String[] prizes;
+    private final Prize[] PRIZES = new Prize[10];
+    private int prizeCount = 0;
 
-    public MedStudent(int studentNumber, String familyName, String givenName, String ... prizes) {
+    public MedStudent(int studentNumber, String familyName, String givenName, String[] prizes) {
         super(studentNumber, familyName, givenName);
-        this.prizes = prizes;
+        for (int i = 0; i < prizes.length; i++)
+            if (prizes[i] != null) {
+                this.PRIZES[i] = new Prize(prizes[i]);
+                prizeCount++;
+            }
+    }
+
+    public void addPrize(String name, String topic, int min) {
+        this.PRIZES[prizeCount] = new Prize(name, topic, min);
+        prizeCount++;
     }
 
     @Override
     public String toString() {
         StringBuilder record = new StringBuilder("Academic record for " + givenName + " " + familyName + " (" + studentNumber + ")");
         record.append("\nDegree: " + DEGREE);
-        for (String prize: prizes)
-            record.append("\nPrize: " + prize);
+        for (int i = 0; i < prizeCount; i++)
+            record.append("\nPrize: " + PRIZES[i]);
         if (!results.isEmpty())
             for (Result result: results)
                 record.append("\n" + result);

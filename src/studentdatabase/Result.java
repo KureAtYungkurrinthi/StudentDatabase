@@ -7,30 +7,23 @@
 package studentdatabase;
 
 public class Result {
-    private int studentNumber;
-    private String topicCode;
+    private String topic;
     private String grade;
     private int mark;
 
-    public Result(int studentNumber, String topicCode, String grade) {
-        this.studentNumber = studentNumber;
-        this.topicCode = topicCode;
+    public Result(String topic, String grade) {
+        this.topic = topic;
         this.grade = grade;
     }
 
-    public Result(int studentNumber, String topicCode, String grade, int mark) {
-        this.studentNumber = studentNumber;
-        this.topicCode = topicCode;
+    public Result(String topic, String grade, int mark) {
+        this.topic = topic;
         this.grade = grade;
         this.mark = mark;
     }
 
-    public void setStudentNumber(int studentNumber) {
-        this.studentNumber = studentNumber;
-    }
-
-    public void setTopicCode(String topicCode) {
-        this.topicCode = topicCode;
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public void setGrade(String grade) {
@@ -41,12 +34,8 @@ public class Result {
         this.mark = mark;
     }
 
-    public int getStudentNumber() {
-        return studentNumber;
-    }
-
-    public String getTopicCode() {
-        return topicCode;
+    public String getTopic() {
+        return topic;
     }
 
     public String getGrade() {
@@ -59,6 +48,6 @@ public class Result {
 
     @Override
     public String toString() {
-        return topicCode + " " + grade + ((mark == 0) ? "" : " " + mark);
+        return topic + " " + grade + ((mark == 0) ? "" : " " + mark);
     }
 }
