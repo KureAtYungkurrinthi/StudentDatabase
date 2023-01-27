@@ -7,12 +7,13 @@
 package studentdatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A class that represents a Student (Science).
  */
 public class Student {
-    public final Degree DEGREE = Degree.science;
+    protected Degree degree;
     protected ArrayList<Result> results = new ArrayList<Result>();
     protected int studentNumber;
     protected String familyName, givenName;
@@ -21,10 +22,7 @@ public class Student {
         this.studentNumber = studentNumber;
         this.familyName = familyName;
         this.givenName = givenName;
-    }
-
-    public void addResult(Result result) {
-        this.results.add(result);
+        this.degree = Degree.science;
     }
 
     public void setStudentNumber(int studentNumber) {
@@ -39,6 +37,10 @@ public class Student {
         this.givenName = givenName;
     }
 
+    public void addResult(Result result) {
+        this.results.add(result);
+    }
+
     public int getStudentNumber() {
         return studentNumber;
     }
@@ -51,10 +53,26 @@ public class Student {
         return givenName;
     }
 
+    public int getAverageMarkPerTopic(String topic, int min) {
+        ArrayList<Integer> topicMarks = new ArrayList<Integer>();
+        for (Result result: results)
+            if (result.getTopic().contains(topic))
+                topicMarks.add(result.getMark());
+        if (topicMarks.size() == 0)
+            return -1;
+        else {
+            Collections.sort(topicMarks, Collections.reverseOrder());
+            int totalMark = 0;
+            for (int i = 0; i < min; i++)
+                totalMark += topicMarks.get(i);
+            return totalMark / min;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder record = new StringBuilder("Academic record for " + givenName + " " + familyName + " (" + studentNumber + ")");
-        record.append("\nDegree: " + DEGREE);
+        record.append("\nDegree: " + degree);
         if (!results.isEmpty())
             for (Result result: results)
                 record.append("\n" + result);

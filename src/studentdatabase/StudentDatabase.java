@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentDatabase {
-    private final ArrayList<Student> studentDatabase = new ArrayList<Student>();
+    private final ArrayList<Student> studentDatabase = new ArrayList<>();
 
     public void addStudent(String s) {
         Scanner vars = new Scanner(s);
@@ -40,9 +40,9 @@ public class StudentDatabase {
         }
     }
 
-    public Student findStudent(String ID) {
+    public Student findStudent(int ID) {
         for (Student student: studentDatabase)
-            if (student.getFamilyName().equals(ID) || student.getGivenName().equals(ID))
+            if (student.getStudentNumber() == ID)
                 return student;
         return null;
     }
@@ -52,16 +52,38 @@ public class StudentDatabase {
         vars.useDelimiter(",");
         char c = vars.next().charAt(0);
         int studentNumber = vars.nextInt();
-        String topicCode = vars.next();
+        String topic = vars.next();
         String grade = vars.next();
         for (Student student : studentDatabase)
             if (student.getStudentNumber() == studentNumber)
-                student.addResult(vars.hasNextInt() ? new Result(topicCode, grade, vars.nextInt()) : new Result(topicCode, grade));
+                student.addResult(vars.hasNextInt() ? new Result(topic, grade, vars.nextInt()) : new Result(topic, grade));
     }
 
-//    public void awardPrize(String prize, String template, int topicsRequired) {
-//
-//    }
+    public void awardPrize(String s) {
+        Scanner vars = new Scanner(s);
+        vars.useDelimiter(",");
+        char c = vars.next().charAt(0);
+        String prizeName = vars.next();
+        String prizeTopic = vars.next();
+        int prizeMin = vars.nextInt();
+        int highScore = -1;
+        int highStudent = -1;
+        for (int i = 0; i < studentDatabase.size(); i++) {
+            if (studentDatabase.get(i).degree == Degree.medicine) {
+                int averageMark = studentDatabase.get(i).getAverageMarkPerTopic(prizeTopic, prizeMin);
+                if (averageMark > highScore) {
+                    highScore = averageMark;
+                    highStudent = studentDatabase.get(i).studentNumber;
+                }
+            }
+        }
+
+        if (highStudent != -1) {
+            MedStudent medStudent = (MedStudent) this.findStudent(highStudent);
+            medStudent.addPrize(prizeName, prizeTopic, prizeMin);
+        }
+
+    }
 
     public void printRecords() throws IOException {
         String fileName = "data/record.txt";

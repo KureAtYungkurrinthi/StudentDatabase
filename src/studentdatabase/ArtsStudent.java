@@ -7,19 +7,19 @@
 package studentdatabase;
 
 public class ArtsStudent extends Student {
-    public final Degree DEGREE = Degree.arts;
     private String major, minor;
 
     public ArtsStudent(int studentNumber, String familyName, String givenName, String major, String minor) {
         super(studentNumber, familyName, givenName);
         this.major = major;
         this.minor = minor;
+        degree = Degree.arts;
     }
 
     @Override
     public String toString() {
         StringBuilder record = new StringBuilder("Academic record for " + givenName + " " + familyName + " (" + studentNumber + ")");
-        record.append("\nDegree: " + DEGREE);
+        record.append("\nDegree: " + degree);
         record.append("\nMajor: " + major);
         record.append("\nMinor: " + minor);
         if (!results.isEmpty())

@@ -7,7 +7,6 @@
 package studentdatabase;
 
 public class MedStudent extends Student {
-    public final Degree DEGREE = Degree.medicine;
     private final Prize[] PRIZES = new Prize[10];
     private int prizeCount = 0;
 
@@ -18,6 +17,7 @@ public class MedStudent extends Student {
                 this.PRIZES[i] = new Prize(prizes[i]);
                 prizeCount++;
             }
+        degree = Degree.medicine;
     }
 
     public void addPrize(String name, String topic, int min) {
@@ -28,7 +28,7 @@ public class MedStudent extends Student {
     @Override
     public String toString() {
         StringBuilder record = new StringBuilder("Academic record for " + givenName + " " + familyName + " (" + studentNumber + ")");
-        record.append("\nDegree: " + DEGREE);
+        record.append("\nDegree: " + degree);
         for (int i = 0; i < prizeCount; i++)
             record.append("\nPrize: " + PRIZES[i]);
         if (!results.isEmpty())
