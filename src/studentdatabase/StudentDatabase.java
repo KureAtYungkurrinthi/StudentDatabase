@@ -1,6 +1,7 @@
 package studentdatabase;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -48,15 +49,17 @@ public class StudentDatabase {
 //    }
 
     public void printRecords() throws IOException {
-        for (Student student: studentDatabase)
-            System.out.println(student + "\n");
+        String fileName = "data/record.txt";
+        PrintWriter outFile = new PrintWriter(fileName);
+        outFile.print(this.toString());
+        outFile.close();
     }
 
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
         for (Student student: studentDatabase)
-            output.append(student).append("\n");
+            output.append(student).append("\n\n");
         return output.toString();
     }
 

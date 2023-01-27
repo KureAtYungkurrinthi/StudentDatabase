@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class StudentDatabaseDriver {
-
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter a file name to process: ");
-        String fileName = scan.nextLine().trim();
+//        Scanner scan = new Scanner(System.in);
+//        System.out.print("Enter a file name to process: ");
+//        String fileName = scan.nextLine().trim();
+        String fileName = "data/testFile.txt";
         Scanner fileReader = new Scanner(new File(fileName));
 
         String s;
@@ -36,6 +36,5 @@ public class StudentDatabaseDriver {
 //        for (int i = 0; i < prizeCount; i++)
 //            prizeList[i].awardPrize(studentDB);
         studentDB.printRecords();
-
     }
 }
